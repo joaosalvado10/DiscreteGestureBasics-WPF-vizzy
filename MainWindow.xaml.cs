@@ -117,7 +117,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
             int maxBodies = this.kinectSensor.BodyFrameSource.BodyCount;
             for (int i = 0; i < maxBodies; ++i)
             {
-                GestureResultView result = new GestureResultView(i, false,false, false, 0.0f);
+                GestureResultView result = new GestureResultView(i,false,false, false,false, false,false, false, 0.0f);
                 GestureDetector detector = new GestureDetector(this.kinectSensor, result);
                 this.gestureDetectorList.Add(detector);
                 
@@ -298,21 +298,53 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                             Debug.WriteLine("hello this is Z");
                             Debug.WriteLine(head.Position.Z);
 
+                            Debug.WriteLine("hand wave right");
+                            Debug.WriteLine(this.gestureDetectorList[i].handwave_right);
+                            
+                            Debug.WriteLine("hand wave left");
+                            Debug.WriteLine(this.gestureDetectorList[i].handwave_left);
 
-                            Debug.WriteLine("hand wave");
-                            Debug.WriteLine(this.gestureDetectorList[i].handwave);
+                            Debug.WriteLine("hand shake right");
+                            Debug.WriteLine(this.gestureDetectorList[i].handshake_right);
 
-                            Debug.WriteLine("hand shake");
-                            Debug.WriteLine(this.gestureDetectorList[i].handshakedone);
+                            Debug.WriteLine("hand wave left");
+                            Debug.WriteLine(this.gestureDetectorList[i].handshake_left);
 
-                            if (this.gestureDetectorList[i].handwave == true)
+                            Debug.WriteLine("cool");
+                            Debug.WriteLine(this.gestureDetectorList[i].cool);
+
+                            Debug.WriteLine("box");
+                            Debug.WriteLine(this.gestureDetectorList[i].box);
+
+
+
+                            if (this.gestureDetectorList[i].handshake_left == true)
                             {
                                 gest_perm = 1;
                             }
 
-                            if (this.gestureDetectorList[i].handshakedone == true)
+                            if (this.gestureDetectorList[i].handshake_right == true)
                             {
                                 gest_perm = 2;
+                            }
+
+                            if (this.gestureDetectorList[i].handwave_left == true)
+                            {
+                                gest_perm = 3;
+                            }
+
+                            if (this.gestureDetectorList[i].handwave_right == true)
+                            {
+                                gest_perm = 4;
+                            }
+                            if (this.gestureDetectorList[i].cool == true)
+                            {
+                                gest_perm = 5;
+                            }
+
+                            if (this.gestureDetectorList[i].box == true)
+                            {
+                                gest_perm = 6;
                             }
 
 

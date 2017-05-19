@@ -141,18 +141,20 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Database\vizzy.gbd" />
+    <None Include="Database\vizzy_final.gbd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Database\vizzy.gbd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\cool.jpg" />
     <Resource Include="Images\Kinect.ico" />
     <Resource Include="Images\Logo.png" />
     <Resource Include="Images\Status.png" />
@@ -164,8 +166,11 @@
     <Content Include="Database\Seated.gbd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\hand_shake.png" />
-    <Resource Include="Images\hand_wave.png" />
+    <Resource Include="Images\box.png" />
+    <Resource Include="Images\hand_shake_left.png" />
+    <Resource Include="Images\hand_shake_right.png" />
+    <Resource Include="Images\hand_wave_left.png" />
+    <Resource Include="Images\hand_wave_right.png" />
     <Resource Include="Images\no_gesture.png" />
   </ItemGroup>
   <ItemGroup />

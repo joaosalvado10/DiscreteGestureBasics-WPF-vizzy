@@ -28,10 +28,33 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         private readonly ImageSource noGesture = new BitmapImage(new Uri(@"Images\no_gesture.png", UriKind.Relative));
 
         /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
-        private readonly ImageSource HandShake = new BitmapImage(new Uri(@"Images\hand_shake.png", UriKind.Relative));
+        //private readonly ImageSource HandShake = new BitmapImage(new Uri(@"Images\hand_shake.png", UriKind.Relative));
 
         /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
-        private readonly ImageSource HandWave = new BitmapImage(new Uri(@"Images\hand_wave.png", UriKind.Relative));
+        //private readonly ImageSource HandWave = new BitmapImage(new Uri(@"Images\hand_wave.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource HandShake_right = new BitmapImage(new Uri(@"Images\hand_shake_right.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource HandShake_left = new BitmapImage(new Uri(@"Images\hand_shake_left.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource HandWave_right = new BitmapImage(new Uri(@"Images\hand_wave_right.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource HandWave_left = new BitmapImage(new Uri(@"Images\hand_wave_left.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource box = new BitmapImage(new Uri(@"Images\box.png", UriKind.Relative));
+
+        /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
+        private readonly ImageSource cool = new BitmapImage(new Uri(@"Images\cool.png", UriKind.Relative));
+
+
+
+
+
 
 
         /// <summary> Image to show when the body associated with the GestureResultView object is not being tracked </summary>
@@ -57,27 +80,58 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         private bool isTracked = false;
 
         /// <summary> True, if the user is attempting to turn left (either 'Steer_Left' or 'MaxTurn_Left' is detected) </summary>
-        private bool hand_shake_detected = false;
+        //private bool hand_shake_detected = false;
 
         /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
-        private bool hand_wave_detected = false;
+        //private bool hand_wave_detected = false;
+          
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool Hand_wave_right_detected2 = false;
+
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool Hand_wave_left_detected2 = false;
+
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool Hand_shake_right_detected2 = false;
+
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool Hand_shake_left_detected2 = false;
+
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool box_detected2 = false;
+
+        /// <summary> True, if the user is attempting to turn right (either 'Steer_Right' or 'MaxTurn_Right' is detected) </summary>
+        private bool cool_detected2 = false;
+
+
+
 
         /// <summary>
         /// Initializes a new instance of the GestureResultView class and sets initial property values
         /// </summary>
         /// <param name="bodyIndex">Body Index associated with the current gesture detector</param>
         /// <param name="isTracked">True, if the body is currently tracked</param>
-        /// <param name="hand_shake_detected">True, if the 'hand_shake' gesture is currently detected</param>
-        /// <param name="hand_wave_detected">True, if the 'wave_hand' gesture is currently detected</param>
+        /// <param name="hand_shake_right_detected2">True, if the 'hand_shake' gesture is currently detected</param>
+        /// <param name="hand_shake_left_detected2">True, if the 'hand_shake' gesture is currently detected</param>
+        /// <param name="box_detected2">True, if the 'hand_shake' gesture is currently detected</param>
+        /// <param name="cool_detected2">True, if the 'wave_hand' gesture is currently detected</param>
+        /// <param name="hand_wave_left_detected2">True, if the 'wave_hand' gesture is currently detected</param>
+        /// <param name="hand_wave_right_detected2">True, if the 'wave_hand' gesture is currently detected</param>
         /// <param name="confidence">Confidence value for detection of the 'Seated' gesture</param>
-        public GestureResultView(int bodyIndex, bool isTracked, bool hand_shake_detected, bool hand_wave_detected, float confidence)
+        public GestureResultView(int bodyIndex, bool isTracked,bool hand_wave_left_detected,bool hand_wave_right_detected,bool hand_shake_left_detected,bool hand_shake_right_detected,bool box_detected,bool cool_detected, float confidence)
         {
             this.BodyIndex = bodyIndex;
             this.IsTracked = isTracked;
-            this.Hand_Shake_detected = hand_shake_detected;
-            this.Hand_Wave_detected = hand_wave_detected;
+            this.Hand_wave_right_detected2 = hand_wave_right_detected;
+            this.Hand_wave_left_detected2 = hand_wave_left_detected;
+            this.Hand_shake_right_detected2 = hand_shake_right_detected;
+            this.Hand_shake_left_detected2 = hand_shake_left_detected;
+            this.box_detected2 = box_detected;
+            this.cool_detected2 = cool_detected;
             this.Confidence = confidence;
             this.ImageSource = this.notTrackedImage;
+
+
         }
 
         /// <summary>
@@ -148,41 +202,150 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         /// <summary> 
         /// Gets a value indicating whether or not the discrete gesture has been detected
         /// </summary>
-        public bool Hand_Shake_detected 
-        {
-            get
-            {
-                return this.hand_shake_detected;
-            }
-
-            private set
-            {
-                if (this.hand_shake_detected != value)
-                {
-                    this.hand_shake_detected = value;
-                    this.NotifyPropertyChanged();
-                }
-            }
-        }
+        /// 
         /// <summary> 
         /// Gets a value indicating whether or not the discrete gesture has been detected
         /// </summary>
-        public bool Hand_Wave_detected
+
+        //public bool Hand_Shake_detected 
+        //{
+          //  get
+            //  return this.hand_shake_detected;
+            //}
+
+            //private set
+            //{
+              //  if (this.hand_shake_detected != value)
+                //{
+                  //  this.hand_shake_detected = value;
+                    //this.NotifyPropertyChanged();
+               // }
+            //}
+        //}
+        /// <summary> 
+        /// Gets a value indicating whether or not the discrete gesture has been detected
+        /// </summary>
+        //public bool Hand_Wave_detected
+        //{
+          //  get
+            //{
+              //  return this.hand_wave_detected;
+            //}
+
+            //private set
+            //{
+              //  if (this.hand_wave_detected != value)
+                //{
+                  //  this.hand_wave_detected = value;
+                    //this.NotifyPropertyChanged();
+                //}
+            //}
+        //}
+
+        public bool Hand_wave_right_detected
         {
             get
             {
-                return this.hand_wave_detected;
+                return this.Hand_wave_right_detected2;
             }
 
             private set
             {
-                if (this.hand_wave_detected != value)
+                if (this.Hand_wave_right_detected2 != value)
                 {
-                    this.hand_wave_detected = value;
+                    this.Hand_wave_right_detected2 = value;
                     this.NotifyPropertyChanged();
                 }
             }
         }
+
+        public bool Hand_wave_left_detected
+        {
+            get
+            {
+                return this.Hand_wave_left_detected2;
+            }
+
+            private set
+            {
+                if (this.Hand_wave_left_detected2 != value)
+                {
+                    this.Hand_wave_left_detected2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool Hand_shake_right_detected
+        {
+            get
+            {
+                return this.Hand_shake_right_detected2;
+            }
+
+            private set
+            {
+                if (this.Hand_shake_right_detected2 != value)
+                {
+                    this.Hand_shake_right_detected2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        public bool Hand_shake_left_detected
+        {
+            get
+            {
+                return this.Hand_shake_left_detected2;
+            }
+
+            private set
+            {
+                if (this.Hand_shake_left_detected2 != value)
+                {
+                    this.Hand_shake_left_detected2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        public bool cool_detected
+        {
+            get
+            {
+                return this.cool_detected2;
+            }
+
+            private set
+            {
+                if (this.cool_detected2 != value)
+                {
+                    this.cool_detected2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool box_detected
+        {
+            get
+            {
+                return this.box_detected2;
+            }
+
+            private set
+            {
+                if (this.box_detected2 != value)
+                {
+                    this.box_detected2 = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         /// <summary> 
         /// Gets a float value which indicates the detector's confidence that the gesture is occurring for the associated body 
@@ -231,7 +394,8 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         /// <param name="isGesture_HAND_SHAKE_Detected">True, if the discrete gesture is currently detected for the associated body</param>
         /// <param name="isGesture_HAND_WAVE_Detected">True, if the discrete gesture is currently detected for the associated body</param>
         /// <param name="detectionConfidence">Confidence value for detection of the discrete gesture</param>
-        public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_HAND_SHAKE_Detected,bool isGesture_HAND_WAVE_Detected, float detectionConfidence)
+        //public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_HAND_SHAKE_Detected,bool isGesture_HAND_WAVE_Detected, float detectionConfidence)
+        public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_COOL_Detected, bool isGesture_BOX_Detected, bool isGesture_HAND_SHAKE_LEFT_Detected, bool isGesture_HAND_SHAKE_RIGHT_Detected, bool isGesture_HAND_WAVE_LEFT_Detected, bool isGesture_HAND_WAVE_RIGHT_Detected, float detectionConfidence)
         {
             this.IsTracked = isBodyTrackingIdValid;
             this.Confidence = 0.0f;
@@ -239,29 +403,90 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
             if (!this.IsTracked)
             {
                 this.ImageSource = this.notTrackedImage;
-                this.Hand_Shake_detected = false;
-                this.Hand_Wave_detected = false;
+                this.cool_detected = false;
+                this.box_detected = false;
+                this.Hand_shake_left_detected = false;
+                this.Hand_shake_right_detected = false;
+                this.Hand_wave_left_detected = false;
+                this.Hand_wave_right_detected = false;
+
+                //this.Hand_Shake_detected = false;
+                //this.Hand_Wave_detected = false;
                 this.BodyColor = Brushes.Gray;
             }
             else
             {
-                this.Hand_Shake_detected = isGesture_HAND_SHAKE_Detected;
-                this.Hand_Wave_detected = isGesture_HAND_WAVE_Detected;
+
+                this.cool_detected = isGesture_COOL_Detected;
+                this.box_detected = isGesture_BOX_Detected;
+                this.Hand_shake_left_detected = isGesture_HAND_SHAKE_LEFT_Detected;
+                this.Hand_shake_right_detected = isGesture_HAND_SHAKE_RIGHT_Detected;
+                this.Hand_wave_left_detected = isGesture_HAND_WAVE_LEFT_Detected;
+                this.Hand_wave_right_detected = isGesture_HAND_WAVE_RIGHT_Detected;
+                //this.Hand_Shake_detected = isGesture_HAND_SHAKE_Detected;
+                //this.Hand_Wave_detected = isGesture_HAND_WAVE_Detected;
+
                 this.BodyColor = this.trackedColors[this.BodyIndex];
 
-                if (this.Hand_Shake_detected)
-                {
+                //if (this.Hand_Shake_detected)
+                //{
                     ///this.Confidence = detectionConfidence;
+                  //  this.Confidence = 2;
+                    //this.ImageSource = this.HandShake;
+                //}
+
+                //else if (this.Hand_Wave_detected)
+                //{
+                    ///this.Confidence = detectionConfidence;
+                  //  this.Confidence = 3;
+                    //this.ImageSource = this.HandWave;
+                //}
+
+                if (this.Hand_shake_left_detected)
+                {
+                    this.Confidence = detectionConfidence;
                     this.Confidence = 2;
-                    this.ImageSource = this.HandShake;
+                    this.ImageSource = this.HandShake_left;
                 }
 
-                else if (this.Hand_Wave_detected)
+                else if (this.Hand_shake_right_detected)
                 {
-                    ///this.Confidence = detectionConfidence;
+                    this.Confidence = detectionConfidence;
                     this.Confidence = 3;
-                    this.ImageSource = this.HandWave;
+                    this.ImageSource = this.HandShake_right;
                 }
+
+
+                else if (this.Hand_wave_left_detected)
+                {
+                    this.Confidence = detectionConfidence;
+                    this.Confidence = 3;
+                    this.ImageSource = this.HandWave_left;
+                }
+
+
+                else if (this.Hand_wave_right_detected)
+                {
+                    this.Confidence = detectionConfidence;
+                    this.Confidence = 3;
+                    this.ImageSource = this.HandWave_right;
+                }
+
+                else if (this.box_detected)
+                {
+                    this.Confidence = detectionConfidence;
+                    this.Confidence = 3;
+                    this.ImageSource = this.box;
+                }
+
+
+                else if (this.cool_detected)
+                {
+                    this.Confidence = detectionConfidence;
+                    this.Confidence = 3;
+                    this.ImageSource = this.cool;
+                }
+
                 else
                 {
                     this.ImageSource = this.noGesture;

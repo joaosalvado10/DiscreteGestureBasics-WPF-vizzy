@@ -154,7 +154,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cool.jpg" />
     <Resource Include="Images\Kinect.ico" />
     <Resource Include="Images\Logo.png" />
     <Resource Include="Images\Status.png" />
@@ -166,6 +165,7 @@
     <Content Include="Database\Seated.gbd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\cool.png" />
     <Resource Include="Images\box.png" />
     <Resource Include="Images\hand_shake_left.png" />
     <Resource Include="Images\hand_shake_right.png" />

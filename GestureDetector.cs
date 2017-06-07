@@ -65,6 +65,9 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
 
         public bool cool;
 
+        public float confi;
+
+
 
 
 
@@ -361,6 +364,8 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
 
                     if (discreteResults != null)
                     {
+                        
+
 
                         //bool hand_shake = this.GestureResultView.Hand_Shake_detected;
                         //bool hand_wave = this.GestureResultView.Hand_Wave_detected;
@@ -371,7 +376,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                         bool handshake_left1 = this.GestureResultView.Hand_shake_left_detected;
                         bool box1 = this.GestureResultView.box_detected;
                         bool cool1 = this.GestureResultView.cool_detected;
-                     
+
 
                         // we only have one gesture in this source object, but you can get multiple gestures
                         foreach (var gesture in this.vgbFrameSource.Gestures)
@@ -380,7 +385,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                             {
                                 DiscreteGestureResult result = null;
                                 discreteResults.TryGetValue(gesture, out result);
-
+                                
                                 if (result != null)
                                 {
                                                                                                             
@@ -388,26 +393,25 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                                     {
                                         box1 = result.Detected;
                                         box = result.Detected;
-
+                                    
                                     }
                                     if (gesture.Name.Equals(this.cool_GestureName))
                                     {
                                         cool = result.Detected;
                                         cool1 = result.Detected;
-
                                     }
 
                                     if (gesture.Name.Equals(this.handshake_left_GestureName))
                                     {
                                         handshake_left = result.Detected;
                                         handshake_left1= result.Detected;
-
+                                        
                                     }
                                     if (gesture.Name.Equals(this.handshake_right_GestureName))
                                     {
                                         handshake_right = result.Detected;
                                         handshake_right1 = result.Detected;
-
+                                        
                                     }
 
 
@@ -415,7 +419,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                                     {
                                         handwave_left = result.Detected;
                                         handwave_left1 = result.Detected;
-
+                                        
                                     }
 
 
@@ -423,11 +427,14 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                                     {
                                         handwave_right = result.Detected;
                                         handwave_right1 = result.Detected;
-
+                                        
                                     }
 
 
-
+                                    if (result.Detected == true)
+                                    {
+                                        confi = result.Confidence;
+                                    }
 
                                     //if (gesture.Name.Equals(this.wave_handGestureName))
                                     //{
@@ -450,8 +457,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                                 }
                             }
                         }
-                        this.GestureResultView.UpdateGestureResult(true,box,cool,handwave_right,handwave_left,handshake_right,handshake_left, 1);
-
+                        this.GestureResultView.UpdateGestureResult(true,box,cool,handshake_left,handshake_right,handwave_left,handwave_right, confi);
                     }
                 }
             }

@@ -46,10 +46,10 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         private readonly ImageSource HandWave_left = new BitmapImage(new Uri(@"Images\hand_wave_left.png", UriKind.Relative));
 
         /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
-        private readonly ImageSource box = new BitmapImage(new Uri(@"Images\box.png", UriKind.Relative));
+        private readonly ImageSource box_img = new BitmapImage(new Uri(@"Images\box.png", UriKind.Relative));
 
         /// <summary> Image to show when the hand_shake property is detected for a tracked body </summary>
-        private readonly ImageSource cool = new BitmapImage(new Uri(@"Images\cool.png", UriKind.Relative));
+        private readonly ImageSource cool_img = new BitmapImage(new Uri(@"Images\cool.png", UriKind.Relative));
 
 
 
@@ -395,7 +395,7 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
         /// <param name="isGesture_HAND_WAVE_Detected">True, if the discrete gesture is currently detected for the associated body</param>
         /// <param name="detectionConfidence">Confidence value for detection of the discrete gesture</param>
         //public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_HAND_SHAKE_Detected,bool isGesture_HAND_WAVE_Detected, float detectionConfidence)
-        public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_COOL_Detected, bool isGesture_BOX_Detected, bool isGesture_HAND_SHAKE_LEFT_Detected, bool isGesture_HAND_SHAKE_RIGHT_Detected, bool isGesture_HAND_WAVE_LEFT_Detected, bool isGesture_HAND_WAVE_RIGHT_Detected, float detectionConfidence)
+        public void UpdateGestureResult(bool isBodyTrackingIdValid, bool isGesture_BOX_Detected, bool isGesture_COOL_Detected, bool isGesture_HAND_SHAKE_LEFT_Detected, bool isGesture_HAND_SHAKE_RIGHT_Detected, bool isGesture_HAND_WAVE_LEFT_Detected, bool isGesture_HAND_WAVE_RIGHT_Detected, float detectionConfidence)
         {
             this.IsTracked = isBodyTrackingIdValid;
             this.Confidence = 0.0f;
@@ -445,14 +445,12 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                 if (this.Hand_shake_left_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 2;
                     this.ImageSource = this.HandShake_left;
                 }
 
                 else if (this.Hand_shake_right_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 3;
                     this.ImageSource = this.HandShake_right;
                 }
 
@@ -460,7 +458,6 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                 else if (this.Hand_wave_left_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 3;
                     this.ImageSource = this.HandWave_left;
                 }
 
@@ -468,23 +465,20 @@ namespace Microsoft.Samples.Kinect.DiscreteGestureBasics
                 else if (this.Hand_wave_right_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 3;
                     this.ImageSource = this.HandWave_right;
                 }
 
                 else if (this.box_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 3;
-                    this.ImageSource = this.box;
+                    this.ImageSource = this.box_img;
                 }
 
 
                 else if (this.cool_detected)
                 {
                     this.Confidence = detectionConfidence;
-                    this.Confidence = 3;
-                    this.ImageSource = this.cool;
+                    this.ImageSource = this.cool_img;
                 }
 
                 else
